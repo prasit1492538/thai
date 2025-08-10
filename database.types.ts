@@ -1,0 +1,337 @@
+export type Json = string | number | boolean | null | { [key: string]: Json | undefined } | Json[]
+
+export interface Database {
+  public: {
+    Tables: {
+      attendance: {
+        Row: {
+          id: string
+          enrollment_id: string
+          date: string
+          checked_in: boolean
+          checked_by: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          enrollment_id: string
+          date: string
+          checked_in?: boolean
+          checked_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          enrollment_id?: string
+          date?: string
+          checked_in?: boolean
+          checked_by?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      branches: {
+        Row: {
+          id: string
+          name: string
+          address: string | null
+          phone: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          address?: string | null
+          phone?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          address?: string | null
+          phone?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      courses: {
+        Row: {
+          id: string
+          name: string
+          description: string | null
+          grade_level: string | null
+          total_sessions: number
+          price: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          name: string
+          description?: string | null
+          grade_level?: string | null
+          total_sessions?: number
+          price: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          name?: string
+          description?: string | null
+          grade_level?: string | null
+          total_sessions?: number
+          price?: number
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      enrollments: {
+        Row: {
+          id: string
+          student_id: string
+          course_id: string
+          schedule_id: string
+          sessions_attended: number
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          student_id: string
+          course_id: string
+          schedule_id: string
+          sessions_attended?: number
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          student_id?: string
+          course_id?: string
+          schedule_id?: string
+          sessions_attended?: number
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      parents: {
+        Row: {
+          id: string
+          student_id: string
+          parent_type: string
+          first_name: string
+          last_name: string
+          occupation: string | null
+          workplace: string | null
+          phone: string | null
+          line_id: string | null
+          email: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          student_id: string
+          parent_type: string
+          first_name: string
+          last_name: string
+          occupation?: string | null
+          workplace?: string | null
+          phone?: string | null
+          line_id?: string | null
+          email?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          student_id?: string
+          parent_type?: string
+          first_name?: string
+          last_name?: string
+          occupation?: string | null
+          workplace?: string | null
+          phone?: string | null
+          line_id?: string | null
+          email?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      revenue: {
+        Row: {
+          id: string
+          branch_id: string
+          amount: number
+          date: string
+          description: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          branch_id: string
+          amount: number
+          date: string
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          branch_id?: string
+          amount?: number
+          date?: string
+          description?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      schedules: {
+        Row: {
+          id: string
+          course_id: string
+          branch_id: string
+          day_of_week: number
+          start_time: string
+          end_time: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          course_id: string
+          branch_id: string
+          day_of_week: number
+          start_time: string
+          end_time: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          course_id?: string
+          branch_id?: string
+          day_of_week?: number
+          start_time?: string
+          end_time?: string
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      student_preferences: {
+        Row: {
+          id: string
+          student_id: string
+          preferred_school_1: string | null
+          preferred_school_2: string | null
+          pdpa_consent: boolean | null
+          branch_id: string | null
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          student_id: string
+          preferred_school_1?: string | null
+          preferred_school_2?: string | null
+          pdpa_consent?: boolean | null
+          branch_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          student_id?: string
+          preferred_school_1?: string | null
+          preferred_school_2?: string | null
+          pdpa_consent?: boolean | null
+          branch_id?: string | null
+          created_at?: string
+          updated_at?: string
+        }
+      }
+      user_branches: {
+        Row: {
+          id: string
+          user_id: string
+          branch_id: string
+          created_at: string
+        }
+        Insert: {
+          id?: string
+          user_id: string
+          branch_id: string
+          created_at?: string
+        }
+        Update: {
+          id?: string
+          user_id?: string
+          branch_id?: string
+          created_at?: string
+        }
+      }
+      users: {
+        Row: {
+          id: string
+          email: string | null
+          phone: string | null
+          password: string | null
+          first_name: string
+          last_name: string
+          nickname: string | null
+          birth_date: string | null
+          address: string | null
+          current_grade: string | null
+          role: Database["public"]["Enums"]["user_role"]
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          email?: string | null
+          phone?: string | null
+          password?: string | null
+          first_name: string
+          last_name: string
+          nickname?: string | null
+          birth_date?: string | null
+          address?: string | null
+          current_grade?: string | null
+          role?: Database["public"]["Enums"]["user_role"]
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          email?: string | null
+          phone?: string | null
+          password?: string | null
+          first_name?: string
+          last_name?: string
+          nickname?: string | null
+          birth_date?: string | null
+          address?: string | null
+          current_grade?: string | null
+          role?: Database["public"]["Enums"]["user_role"]
+          created_at?: string
+          updated_at?: string
+        }
+      }
+    }
+    Views: {
+      [_ in never]: never
+    }
+    Functions: {
+      [_ in never]: never
+    }
+    Enums: {
+      user_role: "student" | "parent" | "teacher" | "admin" | "superadmin"
+    }
+  }
+}
